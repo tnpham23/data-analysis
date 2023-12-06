@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Global Happiness Analysis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+		.container {
+			display: flex;
+        	align-items: center;
+        	justify-content: center
+      	}
+      	img {
+        	max-width: 300%
+      	}
+      	.image {
+        	flex-basis: 100%
+      	}
+      	.text {
+        	font-size: 6px;
+        	padding-left: 200px;
+      	}
+		</style>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Portfolio</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="generic.html">About Me</a></li>
+							<!--<li><a href="generic.html">Tempus etiam</a></li>
+							<li><a href="generic.html">Consequat dolor</a></li>
+							<li><a href="elements.html">Elements</a></li> -->
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Global Happiness Analysis 2022</h1>
+                            <h2>Python: Data Exploration, Pandas, Seaborn</h2>
+							<span class="image main"><img src="images\whpmap.jpg" alt="" width="300" height="400" /></span>
+							<p>This project was completed during my internship at iXperience with the purpose of honing analytic skills through global research. Using data wrangling and visualizations in Python, we answer the following five questions:</p>
+							<p style="margin-bottom: 0;">&#x2022; Are there any regional differences in happiness?</p>
+							<p style="margin-bottom: 0;">&#x2022; What factors correlate with happiness the most?</p>
+							<p style="margin-bottom: 0;">&#x2022; What is the impact of COVID-19 on world happiness?</p>
+							<p style="margin-bottom: 0;">&#x2022; What are certain limitations to this data set and analysis in general?</p>
+							<p>&#x2022; What actionable suggestions can we make to increase world happiness?</p>
+							<p><b>OVERVIEW: HAPPINESS BY COUNTRY</b></p>
+							<p>Each country's happiness score (scale: 0-10) is comprised of 7 hypothesized underlying determinants: GDP per capita, social support, life expectancy, freedom to make choices, generosity, corruption perception, and dystopia + residual. We observe the individual scores of each factor considered for happiness to see the overall makeup of a few notable countries' happiness scores using a horizontal stacked bar chart.</p>
+							<img src= "images\hap-score-comp.jpg" alt="Happiness Score Composition" width="900" height="800" class="center">
+							<p>According to the report, Dystopia is used as a benchmark to "compare contributions from each of the six factors...equal to the lowest national averages" across the six variables in the world (1.83 out of 10). Adding each country's own predictor error (a positive/negative residual) to the dystopia score ensures at least a zero or positive contribution to each of the factors. We were unable to display all measurements from every country due to the length of information therefore we have taken about a third of the countries for some visual context. </p>
+							<p><b>REGIONAL DIFFERENCES IN HAPPINESS</b></p>							
+							<div class="container">
+								<div class="image">
+								  <img src="images\avghapcountry.jpg">
+								</div>
+								<div class="text">
+								  <h1><span style="font-weight:normal">Although the original dataset did not have continents column, we merged the COVID-19 dataset (updated 06/2022) to group each country by the continent and calculated the average happiness score. Further breaking down each continent, we find that Finland has the highest score of 7.821 and Afghanistan with the lowest score at 2.404. Below are the breakdowns of highest scores by factors:</span></h1>
+								  <p style="padding-left: 30px; margin-bottom: 0; font-size: 15px">&#x2022; GDP per capita: Luxembourg</p>
+								  <p style="padding-left: 30px; margin-bottom: 0; font-size: 15px">&#x2022; Social support: Iceland</p>
+								  <p style="padding-left: 30px; margin-bottom: 0; font-size: 15px">&#x2022; Healthy life expectancy: Cambodia</p>
+								  <p style="padding-left: 30px; margin-bottom: 0; font-size: 15px">&#x2022; Freedom to make life choices: Cambodia</p>
+								  <p style="padding-left: 30px; margin-bottom: 0; font-size: 15px">&#x2022; Generosity: Indonesia</p>
+								  <p style= "padding-left: 30px; font-size: 15px">&#x2022; Perceptions of corruption: Singapore</p>
+								</div>
+						</div>
+						<p></p>
+						<p><b>CORRELATION ANALYSIS</b></p>
+						<p>We run a linear regression model of the happiness scores of each country against each of the six factors to identify what has the greatest affect on the happiness index. We find <b>social support</b> has the most affect on the happiness index with the highest R-squared value of 0.5818. The factor with the least correlation is generosity, which has an R-squared value of 0.002621. Below are the 6 graphs for the regression of the happiness scores for each contributing variable.</p>
+						<img src= "images\reg_factors.jpg" alt="Correlation between Happiness Scores and its Factors" class="center">
+						<p><b>COVID-19 EFFECTS ON HAPPINESS SCORES</b></p>
+						<p>Using the merged COVID-19 data, we also want to find the Pearson correlation coefficients of each of the six factors and the covid vaccination rates against each other to find the best correlation against the happiness score. Some of the notable and interesting correlations are happiness and social support (0.83), - which should not come as a surprise - life expectancy and GDP per capita (0.81), and GDP per capita with happiness scores (0.81). This is displayed through a custom factor correlation heatmap below.</p>
+						<img src= "images\factorcorr.jpg" alt="Factor Correlation 2022" class="center">
+						<p>Some disclaimers regarding certain "matching" factors such as gdp_per_capita (from COVID-19 dataset) and GDP per Capita (happiness dataset) is that there could be some discrepancies between the data collected in the COVID-19 data and the Global Happiness data such as missing data, hence why they do not have an exact correlation of 1.00 as it should be. </p>
+						<p>What we are interested in from these datasets is the vaccination rates and average happiness, in which we will investigate into further detail through breaking down the data in quantiles to evaluate the overall correlation. </p>
+						<div class="container">
+							<div class="image">
+							  <img src="images/vacc_happ.jpg" style="margin-left: 4em;">
+							</div>
+							<div class="text">
+							<h1><span style="font-weight:normal">Here, we run a hypothesis test on this linear regression model of the quantiles of total fully vaccinated rates (per hundred) against the average happiness scores, grouped by every 10th percentile. </span></h1>
+							  <p></p>
+							  <p style="margin-bottom: 0; font-size: 15px">&#x2022; H₀: There is NO relationship between average happiness and total fully vaccinated people per hundred</p>
+							  <p style="margin-bottom: 0; font-size: 15px">&#x2022; P-value: 0.0082 < 0.05, therefore this data is statistically significant</p>
+							  <p style="margin-bottom: 0; font-size: 15px">&#x2022; <b>Conclusion: </b>We can reject the null hypothesis and confirm that there is a strong positive correlation between these two factors</p>
+							</div>
+					</div>
+					<p></p>
+					<p><b>LIMITATIONS AND RECOMMENDATIONS</b></p>
+					<p>First, we must disclaim that with every regression analysis, we must address the post-hoc fallacy that correlation does not equal causation. In order to establish the cause and effect, there must be properly monitored treatment-control studies on these factors along with A/B testing to establish causation. As described by the dataset which we extracted the information from,
+						“[The six factors] have no impact on the total score reported for each country, but they do explain why some countries rank higher than others.” (Kaggle). In other words, these factors do not affect world happiness directly, but explains the proportions of each factor of how much it contributes to the total happiness.
+						Another factor to consider is that the subjects' responses to some questions can vary over time, and is subjective on its scalings yet these are not taken into consideration for certain questions. For example, the scaling of freedom/generousity is simply a binary response of 0 or 1, which ignores the variation and complexity behind the question.
+					</p>
+					<p style="margin-bottom: 0;">However based on our exploratory analysis, we can make a couple of actionable recommendations that would increase world happiness. </p>
+					<p style="margin-bottom: 0;">&#x2022; Increase vaccination rates and more accessible healthcare</p>
+					<p style="margin-bottom: 0;">&#x2022; Identify where key essential resources are clustered and promote a more equitable worldwide distribution, especially in unprecedented times</p>
+					<p style="margin-bottom: 0;">&#x2022; Monitor global patterns of wealth accumulation and economic growth to ensure consistent developments worldwide</p>
+					<p>&#x2022; Increase exposure and a larger global perspective of human lives across the globe to increase awareness and social support from more developed countries and affluent citizens through responsible news coverage and social media</p>
+					<p>To further this analysis, our observations could be used to create a prediction model using multiple linear regression to predict the happiness score of our six factors on a hypothetical country in 2022.</p>
+					<p></p>
+					<p><b>CREDITS AND DATASET INFO</b></p>
+					<p style="margin-bottom:0;"><a href="https://github.com/tnpham23/world-happiness-2022/blob/main/World_Happiness_2022_Project.ipynb">Google Colab code (Python)</a></p>
+					<p style="margin-bottom:0;"><a href="https://www.kaggle.com/datasets/mathurinache/world-happiness-report-2022"> Kaggle Happiness Dataset (2022) </a></p>
+					<p style="margin-bottom:0;"><a href="https://www.kaggle.com/datasets/caesarmario/our-world-in-data-covid19-dataset"> Kaggle COVID-19 Dataset (up-to-date)</a></p>
+					<p><a href="https://worldhappiness.report/ed/2022/"> World Happiness 2022: Report and Appendix </a></p>
+					<p><i>This project was a collaboration between fellow iXperience colleagues: Phu Dang, Sean Ku, and Sofia Avila. The project was presented on July 24, 2022 to the iXperience cohort under the supervision of Taryn Morris.</i></p>
+					<!-- Footer 
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>-->
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<style>
+		.center {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 50%;
+		  }
+		</style>
+	<head>
+		<title>House Sales and Leukemia</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Portfolio</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="generic.html">About Me</a></li>
+							<!--<li><a href="generic.html">Tempus etiam</a></li>
+							<li><a href="generic.html">Consequat dolor</a></li>
+							<li><a href="elements.html">Elements</a></li> -->
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>House Sales and Leukemia</h1>
+                            <h2>Stata: Univariate Linear Regression</h2>
+							<span class="image main"><img src="images\housesales.jpg" alt="" class=center style="width:600px;height:300px;"/></span>
+							<p>In this APA style Economics paper, I explore the data between two counties, <u>Churchhill</u> (treatment variable with existing leukemia cases) and <u>Lyon</u> (control variable with no leukemia cases). With the variable of interest being the <u>log real house sales</u> in these communities, we are curious if there is a linear relationship between house sales and quality of life, in this case health.</p>
+							<iframe src="https://docs.google.com/document/d/e/2PACX-1vTkgPMw5qj3ydKzXdhTjy8fIVUGnKOfWEI9bWceyesdQu2BQ4tUiF4x0XYDVbwycB7MCwAkIllXB9AM/pub?embedded=true"
+								width = 100% height = 1380px></iframe>
+							<p></p>
+							<p><b>STATA Code for Figures</b></p>
+							<pre><code>tabstat lnrealsales if county==1, by(y00) stat(mean n sd min max)
+tabstat lnrealsales if county==0, by(y00) stat(mean n sd min max)
+
+tabstat age acres sqft condition cases if county==1, by(y00)
+tabstat age acres sqft condition cases if county==0, by(y00)
+
+**table5
+reg lnrealsales county age cases acres sqft condition y1 y2 y3 y4 y5 y6 y7 y8 y9 y10 y11 y12
+test ( y1 y2 y3 y4 y5 y6 y7 y8 y9 y10 y11 y12)
+
+**table6
+reg lnrealsales county y00 y00county
+
+**table7
+reg lnrealsales county y00 y00county age cases acres sqft condition
+
+
+graph twoway kdensity lnrealsales if y00 || kdensity lnrealsales if !y00, ///
+		title("Distribution of Log Real House Prices") ///
+		xtitle("Log Real Sales") ///
+		ytitle("Density") ///
+		legend(label(1 "Year >=2000") label(2 "Year < 2000"))
+
+reg lnrealsales county cases y00 y00county y00cases
+est store m1
+
+reg lnrealsales county cases y00 y00county y00cases, robust
+est store m2
+
+reg lnrealsales county cases y00 y00county y00cases sqft age acres condition
+est store m3
+
+esttab m1 m2 m3 using "mreg.rtf", se label ar2 replace ///
+		title("Explaining Change of House Prices between 1990-2002") ///
+		mtitles("OLS" "Robust Std" "With Controls")</code></pre>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
